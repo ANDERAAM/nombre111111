@@ -30,7 +30,7 @@ LlenarVector(){
     }
     }
     Archivo.close();
-}
+}kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
 //Modificar()
 void gotoxy(int x,int y){
       HANDLE hcon;
