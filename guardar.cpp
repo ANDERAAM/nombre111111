@@ -72,7 +72,7 @@ if(y=="1"){y="A50000";}
 if(y=="2"){y="B68000";}
 if(y=="3"){y="C90000";}
 }
-
+jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj
 
 
 
