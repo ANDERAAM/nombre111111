@@ -48,8 +48,8 @@ cin.ignore();
 /*a=Base[4];b=Base[5];c=Base[6];d=Base[7];e=Base[8]*/;string x;string y;string valor;string cod;int Valor;
 //cout<<a<<" "<<b<<" "<<c<<" "<<d<<" "<<e<<endl;
 b=atoi(Base[3].c_str());
-ofstream Archivo;
-Archivo.open("Parametros.txt",ios::app);
+fstream Archivo;
+Archivo.open("Parametros.txt",ios::app | ios::out);
  gotoxy(65,8); cout<<"I N G R E S E  VA L O R E S  A  L A  N O M I N A ";
  gotoxy(71,11); cout<<"1. DEDUCCIONES     (DESCUENTOS)";
  gotoxy(71,13); cout<<"2. BONIFICACIONES  (BONOS)";
@@ -75,7 +75,7 @@ c=atoi(Base[7].c_str());
 a=a+Valor;
 int Total = atoi(Base[8].c_str());
 Total = (Total+c)-(a);
-Archivo<<Base[4]<<" * "<<Base[5]<<" * "<<a<<" * "<<Base[7]<<" * "<<Total<<endl;
+Archivo<<Base[0]<<" * "<<Base[1]<<" * "<<Base[2]<<" * "<<Base[3]<<" * "<<Base[4]<<" * "<<Base[5]<<" * "<<a<<" * "<<Base[7]<<" * "<<Total<<endl;
 }else if(x=="2"){
 system("cls");
 gotoxy(60,8); cout<<" A G R E G U E  E L  D E T A L L E  D E  B O N I F I C A C I O N ";
@@ -95,7 +95,7 @@ c=atoi(Base[6].c_str());
 a=a+Valor;
 int Total = atoi(Base[8].c_str());
 Total = (Total+a)-(c);
-Archivo<<endl<<Base[4]<<" * "<<Base[5]<<" * "<<Base[6]<<" * "<<a<<" * "<<Total<<endl;
+Archivo<<Base[0]<<" * "<<Base[1]<<" * "<<Base[2]<<" * "<<Base[3]<<" * "<<Base[4]<<" * "<<Base[5]<<" * "<<Base[6]<<" * "<<a<<" * "<<Total<<endl;
 }else{
 system("cls");
 exit(-1);
