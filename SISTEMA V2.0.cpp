@@ -56,7 +56,7 @@ Empleados *Arbol3 = NULL;
 
 
 void CrearEm();
-void Eliminar(string x);
+void Eliminar(string x ,string y ,string z );
 void Modificar(string x);
 
 void PreOrden(Empleados *&Arbol){
@@ -114,18 +114,17 @@ a=a+6;
 }
 return -1;
 }
-int  VerificarCedula1(string x){
+int  VerificarCedula1(string x,strin){
 int a=0;
-for(int i=0;i<(datoa.size()/6);i++){
+for(int i=0;i<(datoa.size()/9);i++){
 if(datoa[a]==" "+x){;
 return a;
 exit(1);
 }
-a=a+8;
+a=a+9;
 }
 return -1;
 }
-
 string CedulaC(long long x){
 string Result;          // string which will contain the result
 ostringstream convert;   // stream used for the conversion
@@ -194,10 +193,11 @@ void Vista(){
 
 int main() {
 fflush(stdin);cin.clear();
-//BaseExtra();
-//BaseExtra2();
-//Parametros();
-Vista();
+BaseExtra();
+BaseExtra2();
+BaseArbol();
+Parametros();
+//Vista();
 //Menu();
 getch();
 }
@@ -449,7 +449,7 @@ BaseExtra();
 BaseArbol();
 }
 /////////////////////////////////
-void Eliminar(string x){ ///funcion que elimina la informacion completa del trabajador
+void Eliminar(string x , string y , string z){ ///funcion que elimina la informacion completa del trabajador
 if(VerificarCedula(x)!=-1){
 int Posicion = VerificarCedula(x);
 fflush( stdin );Auxiliar.assign(dato1.begin()+Posicion,(dato1.begin()+(Posicion+6)));
@@ -588,7 +588,7 @@ string NombreEmpresa,Departamento,Salario;
 if(dato1.size()!=0){
 fflush( stdin );cin.clear();char Opcion[10];int a;
 VisualizarEmpleados();
-cout<<endl<<endl<<endl<<"����������������������������������������������������������������������������������������������������������������������������������������������������������������������������";
+cout<<endl<<endl<<endl<<"=============================================================================================================================================================================================";
 cout<<endl<<endl<<endl<<" Digite La  Cedula Correspondiente del Empleado :";cin>>Codigo;validar(Codigo);Cedula1=Codigo;Cedula=atoll(Cedula1.c_str());
 if(VerificarCedula(Cedula1)==-1){
 system("cls");
@@ -614,6 +614,9 @@ InsertarArchivo2(Cedula1,NombreEmpresa,Departamento,Salario);
 
 void InsertarArchivo2(string Cedula,string NombreEmpresa,string NombreDepartamento,string Salario){
 fflush( stdin );
+int  a,b,c,d,e;
+cin.ignore();int P = 0;string x;string y;string valor;string cod;int Valor;
+P = VerificarCedula1(Cedula);
 fstream Archivo;system("cls");
 Cedula = Cedula.substr(1);NombreEmpresa = NombreEmpresa.substr(1);
 NombreDepartamento = NombreDepartamento.substr(1);Salario = Salario.substr(1);
@@ -623,10 +626,61 @@ long long Sal = (atoll(Cedula.c_str())*26)/(365);
 Archivo<<Cedula<<" * "<<NombreEmpresa<<" * "<<NombreDepartamento<<" * "<<Sal<<" * "<<"."<<" * "<<"."<<" * "<<"0"<<" * "<<"0"<<" * "<<"0"<<" * "<<endl;
 Archivo.close();
 }else{
-    
-    
+ofstream Archivo;fflush( stdin );
+Archivo.open("Parametros.txt",ios::app);
+gotoxy(65,8); cout<<"I N G R E S E  VA L O R E S  A  L A  N O M I N A ";
+gotoxy(71,11); cout<<"1. DEDUCCIONES     (DESCUENTOS)";
+gotoxy(71,13); cout<<"2. BONIFICACIONES  (BONOS)";
+gotoxy(73,15); cout<<"Ingrese La Opcion Que Desee : ";cin>>x;
+if(x=="1"){
+system("cls");
+gotoxy(54,8); cout<<"A G R E G U E  E L  D E T A L L E  D E  D E S C U E N T O";
+gotoxy(66,11); cout<<"1. PENSION CODIGO : A || $ 50000";
+gotoxy(66,14); cout<<"2. COTIZACION DE SALUD COD : B || $ 68000";
+gotoxy(66,17); cout<<"3. PRESTAMO  CODIGO : C || $ 90000";
+gotoxy(66,20); cout<<"4. SEGURO    CODIGO : D || $ 78950";
+gotoxy(71,23); cout<<"Ingrese La Opcion Que Desee : ";cin>>y;
+if(y=="1"){y="A50000";}
+if(y=="2"){y="B68000";}
+if(y=="3"){y="C90000";}
+if(y=="4"){y="D78950";}
+cod=y.substr(0,1);
+valor=y.substr(1);
+Valor=atoi(valor.c_str());
+datoa[P+4]=cod+datoa[P+4];
+a=atoi(datoa[P+6].c_str());
+c=atoi(datoa[P+7].c_str());
+a=a+Valor;
+int Total = atoi(datoa[P+8].c_str());
+Total = (Total+c)-(a);
+datoa[6]=Entero(a);
+Archivo<<datoa[P+0]<<" * "<<datoa[P+1]<<" * "<<datoa[P+2]<<" * "<<datoa[P+3]<<" * "<<datoa[P+4]<<" * "<<datoa[P+5]<<" * "<<a<<" * "<<datoa[P+7]<<" * "<<Total<<endl;
+//cout<<endl<<datoa[P+0]<<" * "<<datoa[P+1]<<" * "<<datoa[P+2]<<" * "<<datoa[P+3]<<" * "<<datoa[P+4]<<" * "<<datoa[P+5]<<" * "<<a<<" * "<<datoa[P+7]<<" * "<<Total<<endl;
+}else if(x=="2"){
+system("cls");
+gotoxy(60,8); cout<<" A G R E G U E  E L  D E T A L L E  D E  B O N I F I C A C I O N ";
+gotoxy(66,12); cout<<"1. AUXILIO TRANSPORTE CODIGO : E || $ 30000";
+gotoxy(66,15); cout<<"2. AUXILIO DE COMIDA  CODIGO : F || $ 25000";
+gotoxy(66,18); cout<<"3. PREMIO  CODIGO : G || $40000";
+gotoxy(71,21); cout<<"Ingrese La Opcion Que Desee : ";cin>>y;
+if(y=="1"){y="E30000";}
+if(y=="2"){y="F25000";}
+if(y=="3"){y="G40000";}
+cod=y.substr(0,1);
+valor=y.substr(1);
+Valor=atoi(valor.c_str());
+datoa[4]=cod+datoa[4];
+a=atoi(datoa[7].c_str());
+c=atoi(datoa[6].c_str());
+a=a+Valor;
+int Total = atoi(datoa[8].c_str());
+Total = (Total+a)-(c);
+Archivo<<datoa[P+0]<<" * "<<datoa[P+1]<<" * "<<datoa[P+2]<<" * "<<datoa[P+3]<<" * "<<datoa[P+4]<<" * "<<datoa[P+5]<<" * "<<datoa[P+6]<<" * "<<a<<" * "<<Total<<endl;
+//cout<<Base[P+0]<<" * "<<Base[P+1]<<" * "<<Base[P+2]<<" * "<<Base[P+3]<<" * "<<Base[P+4]<<" * "<<Base[P+5]<<" * "<<a<<" * "<<Base[P+7]<<" * "<<Total<<endl;    
+}else{
+system("cls");
+exit(-1);
 }
-
-
-
+Archivo.close();
+}        
 }
