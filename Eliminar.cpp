@@ -49,7 +49,6 @@ for(int i=0;i<dato1.size()/6;i++){
 }
 }
 }
-
 void BaseExtra2(){            /// ALMACENA LOS DATOS DEL FICHERO PARAMETROS EN DOS VECTORES DINAMICOS
 datoa.clear();datob.clear();
 ifstream Archivo;
@@ -82,10 +81,10 @@ for(int i=0;i<datoa.size()/9;i++){
 
 int  VerificarCedula(string x,vector<string>b){
 int a=0;int tam=0;int d=0;int e=-1;fflush( stdin );cin.clear();
-if(b[2]==" SISTEMA" || b[2]==" NOMINA" || b[2]==" GESTION HUMANA" || b[2]==" PRODUCCION" || b[2]==" CONTABILIDAD"){
+if(b[2]=="SISTEMA" || b[2]=="NOMINA" || b[2]=="GESTION HUMANA" || b[2]=="PRODUCCION" || b[2]=="CONTABILIDAD"){
     a=0;
     for(int i=0;i<b.size();i++){
-        if(b[a]==" "+x){
+        if(b[a]==x){
         return a;
         exit(-1);
         }
@@ -94,7 +93,7 @@ if(b[2]==" SISTEMA" || b[2]==" NOMINA" || b[2]==" GESTION HUMANA" || b[2]==" PRO
 }else{
     a=0;
     for(int i=0;i<b.size();i++){
-        if(b[a]==" "+x){
+        if(b[a]==x){
         return a;
         exit(-1);
         }
@@ -113,12 +112,12 @@ void gotoxy(int x,int y){
       SetConsoleCursorPosition(hcon,dwPos);
  }
 void Eliminar(string x , string y , vector<string>b,vector<string>c){ ///funcion que elimina la informacion completa del trabajador
- fflush( stdin );cin.clear();
+fflush( stdin );cin.clear();
 int P = VerificarCedula(x,b);
-if(P==-1){
+if(P!=-1){
 int Posicion = VerificarCedula(x,b);
 Auxiliar.clear();
-if(b[2]==" SISTEMA" || b[2]==" NOMINA" || b[2]==" GESTION HUMANA" || b[2]==" PRODUCCION" || b[2]==" CONTABILIDAD"){
+if(b[2]=="SISTEMA" || b[2]=="NOMINA" || b[2]=="GESTION HUMANA" || b[2]=="PRODUCCION" || b[2]=="CONTABILIDAD"){
 Auxiliar.assign(b.begin()+Posicion,b.begin()+Posicion+9);
 b.erase(b.begin()+Posicion,b.begin()+Posicion+9);
 c.erase(c.begin()+(Posicion/9));
@@ -130,7 +129,7 @@ c.erase(c.begin()+(Posicion/6));
 fstream Archivo;
 Archivo.open(y,ios::out);
 for(int i=0;i<c.size();i++){
-cout<<c[i]<<endl;
+Archivo<<c[i]<<endl;
 }
 Archivo.close();
 }else{
@@ -140,17 +139,17 @@ getch();
 exit(-1);
  }
 }
-
+nn
 
 int main(){
  fflush( stdin );cin.clear();    
 BaseExtra();
 BaseExtra2();
 
-Eliminar("1081827158","Empleado.txt",dato1,dato2);
+Eliminar("2015114101","Empleado.txt",dato1,dato2);
 
-//for(int i=0;i<dato2.size();i++){
-//    cout<<"--"<<dato2[i]<<endl;
+//for(int i=0;i<dato1.size();i++){
+//    cout<<dato1[i]<<endl;
 //}
 
 //int P = VerificarCedula("2015114",dato1);
