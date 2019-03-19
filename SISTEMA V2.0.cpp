@@ -56,7 +56,7 @@ Empleados *Arbol3 = NULL;
 
 
 void CrearEm();
-void Eliminar(string x ,string y ,string z );
+void Eliminar(string x , vector<string>b,vector<string>c);
 void Modificar(string x);
 
 void PreOrden(Empleados *&Arbol){
@@ -75,7 +75,6 @@ void BaseExtra2();
 
 void Parametros();
 void InsertarArchivo2(string Cedula,string NombreEmpresa,string NombreDepartamento,string Salario);
-
 
 void gotoxy(int x,int y){
       HANDLE hcon;
@@ -103,25 +102,24 @@ if (letra==""){
     }
 
 }
-int  VerificarCedula(string x){
-int a=0;
-for(int i=0;i<(dato1.size()/6);i++){
-if(dato1[a]==" "+x){;
+int  VerificarCedula(string x,vector<string>b,vector<string>c){
+int a=0;int tam=0;int d=0;int e=0;
+if(b[2]=="ECOPETROL EMPRESA A" || b[2]=="CEMENTOS ARGOS EMPRESA C" || b[2]=="BAVARIA EMPRESA B" ){
+for(int i=0;i<b.size();i++){
+if(b[a]==" "+x){
 return a;
-exit(1);
+}
+a=a+9;
+}
+return -1;
+}else{
+a=0;
+for(int i=0;i<b.size();i++){
+if(b[a]==" "+x){
+return a;
 }
 a=a+6;
 }
-return -1;
-}
-int  VerificarCedula1(string x,strin){
-int a=0;
-for(int i=0;i<(datoa.size()/9);i++){
-if(datoa[a]==" "+x){;
-return a;
-exit(1);
-}
-a=a+9;
 }
 return -1;
 }
@@ -271,9 +269,6 @@ fflush(stdin);cin.clear();
 	Menu();
 }
 }
-
-
-
 ////////////////////BASE DE DATOS
 void BaseExtra(){             /// ALMACENA LOS DATOS DEL FICHERO EMPLEADO EN DOS VECTORES DINAMICOS
 dato1.clear();dato2.clear();
@@ -449,21 +444,21 @@ BaseExtra();
 BaseArbol();
 }
 /////////////////////////////////
-void Eliminar(string x , string y , string z){ ///funcion que elimina la informacion completa del trabajador
+void Eliminar(string x , vector<string>b,vector<string>c){ ///funcion que elimina la informacion completa del trabajador
 if(VerificarCedula(x)!=-1){
-int Posicion = VerificarCedula(x);
-fflush( stdin );Auxiliar.assign(dato1.begin()+Posicion,(dato1.begin()+(Posicion+6)));
-fflush( stdin );dato1.erase(dato1.begin()+Posicion,(dato1.begin()+(Posicion+6)));
+int Posicion = VerificarCedula1(x,b);
+fflush( stdin );Auxiliar.assign(b.begin()+Posicion,b.begin()+(Posicion+b.size()));
+fflush( stdin );b.erase(b.begin()+Posicion,(b.begin()+(Posicion+b.size())));
 if(Posicion==0){
-dato2.erase(dato2.begin()+Posicion);
+c.erase(c.begin()+Posicion);
 }else
 {
-dato2.erase(dato2.begin()+(Posicion/6));
+c.erase(c.begin()+(Posicion/b.size()));
 }
 ofstream Archivo;
 Archivo.open("Empleado.txt",ios::out);
-for(int i=0;i<dato2.size();i++){
-Archivo<<endl<<dato2[i];
+for(int i=0;i<c.size();i++){
+Archivo<<endl<<c[i];
 }
 getch();
 Archivo.close();
@@ -473,8 +468,6 @@ system("cls");
 gotoxy(50,12);printf("LA CEDULA NO SE ENCUENTRA EN EL SISTEMA");
 getch();exit(1);
 }
-BaseExtra();
-BaseArbol();
 }
 void Modificar(string x){///funcion que modifica  la informacion del trabajador
 Departamento.clear();NombreEmpresa.clear();
