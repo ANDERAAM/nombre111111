@@ -57,7 +57,7 @@ Empleados *Arbol3 = NULL;
 
 void CrearEm();
 void Eliminar(string x , vector<string>b,vector<string>c);
-void Modificar(string x);
+void Modificar(string x , vector<string>b,vector<string>c);
 
 void PreOrden(Empleados *&Arbol){
      if(Arbol!=NULL)
@@ -468,7 +468,7 @@ system("cls");
 gotoxy(50,12);printf("LA CEDULA NO SE ENCUENTRA EN EL SISTEMA");
 getch();exit(1);
 }
-}nnn
+}
 void Modificar(string x){///funcion que modifica  la informacion del trabajador
 Departamento.clear();NombreEmpresa.clear();
 Eliminar(x);

@@ -139,7 +139,87 @@ getch();
 exit(-1);
  }
 }
-nn
+
+void Modificar(string x , string y , vector<string>b,vector<string>c){///funcion que modifica  la informacion del trabajador
+Departamento.clear();NombreEmpresa.clear();
+Eliminar(x);
+for(int i=0;i<Auxiliar.size();i++){
+string x = Auxiliar[i].substr(1,Auxiliar[i].size()-1);
+Auxiliar[i]=x;
+}
+getch();
+fflush( stdin );cin.clear();system("cls");int Opcion=0;
+//cout<<Auxiliar[0]<<"--"<<Auxiliar[1]<<"--"<<Auxiliar[2]<<"--"<<Auxiliar[3]<<"--"<<Auxiliar[4]<<"--"<<Auxiliar[5]<<"--"<<endl;
+char Numero[100] ; long long Cedula ;string Nombre ;string FechaNacimiento ;string y;long long Salario;
+gotoxy(27,9);  cout<<" SELECCIONE  LOS DATOS DEL EMPLEADO QUE DESEA MODIFICAR ";
+gotoxy(42,11);  cout<<"0. CEDULA";
+gotoxy(42,13);  cout<<"1. EMPRESA A DONDE LABORA";
+gotoxy(42,15); cout<<"2. NOMBRE COMPLETO";
+gotoxy(42,17); cout<<"3. FECHA DE NACIMIENTO";
+gotoxy(42,18); cout<<"4. DEPARTAMENTO EN DONDE LABORA EL EMPLEADO";
+gotoxy(42,19); cout<<"5. SALARIO DEL EMPLEADO";
+gotoxy(35,20);cout<<"Seleccione EL Departamento Deacuerdo Al Numero -> ";fflush( stdin );cin>>Numero;validar(Numero);Opcion=atoi(Numero);
+system("cls");
+if(Opcion>0 && Opcion>=6){
+system ("cls");
+gotoxy(40,9);printf("I N G R E S O  N U M E R O  V A L I D O");
+gotoxy(42,15);exit(1);
+}
+if(Opcion==0){
+gotoxy(42,7); cout<<"INGRESE LA CEDULA DEL NUEVO EMPLEADO : ";fflush( stdin );cin>>Numero;validar(Numero);y=Numero;string numero=Numero;Cedula=atoll(y.c_str());//validar(Codigo);Cedula = Convertir_letras(Cedula1);//Codifgetline(cin,Cedula1);//cin>>Cedula;cin.clear();//;Cedula1 = Codigo;//validar(Codigo);Cedula1 = Codigo;Verificar(Cedula1);
+if(VerificarCedula(numero)!=-1){
+system("cls");
+gotoxy(50,12);printf("I N G R E S E  U N A  C E D U L A  N O  R E P E T I D A");
+getch();
+exit(1);
+}else{
+Auxiliar[0]=y;
+}
+}
+if(Opcion==1){
+Empresa1();
+}
+if(Opcion==2){
+fflush( stdin );
+gotoxy(42,9); cout<<"INGRESE EL NOMBRE DEL NUEVO EMPLEADO : ";fflush( stdin );getline(cin,Nombre);Vacio(Nombre);
+Auxiliar[2]=Nombre;
+}
+if(Opcion==3){
+fflush( stdin );
+gotoxy(42,11);cout<<"INGRESE LA FECHA DE NACIMEINTO DEL NUEVO EMPLEADO : ";fflush( stdin );getline(cin,FechaNacimiento);Vacio(FechaNacimiento);Fecha(FechaNacimiento);
+Auxiliar[3]=FechaNacimiento;
+}
+if(Opcion==4){
+Departamento1();
+}
+if(Opcion==5){
+fflush( stdin );
+gotoxy(42,13);cout<<"INGRESE EL SALARIO DEL NUEVO EMPLEADO : ";fflush( stdin );cin>>Numero;validar(Numero);y=Numero;Salario=atoll(y.c_str());
+Auxiliar[5]=y;
+}
+ofstream Archivo;
+system("cls");
+fflush( stdin );string w=Auxiliar[0]+" * "+Auxiliar[1]+" * "+Auxiliar[2]+" * "+Auxiliar[3]+" * "+Auxiliar[4]+" * "+Auxiliar[5]+" * ";
+dato2.push_back(w);
+//cout<<dato2[dato2.size()-2]<<endl;
+for(int i=0;i<dato2.size();i++){
+cout<<dato2[i]<<endl;
+}
+Archivo.open("Empleado.txt");
+Archivo.close();
+Archivo.open("Empleado.txt",ios::app);
+for(int i=0;i<dato2.size();i++){
+Archivo<<dato2[i]<<endl;
+}
+//Archivo<<w<<endl;//Auxiliar[0]<<" * "<<Auxiliar[1]<<" * "<<Auxiliar[2]<<" * "<<Auxiliar[3]<<" * "<<Auxiliar[4]<<" * "<<Auxiliar[5]<<" * "<<endl;
+Archivo.close();
+}
+
+
+
+
+
+
 
 int main(){
  fflush( stdin );cin.clear();    
